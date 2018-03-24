@@ -9,35 +9,61 @@ import {
   Divider,
   Button,
   List,
+  Form,
 } from 'semantic-ui-react';
+import DishForm from './DishForm';
 
 class Menu extends React.Component {
-  state = { search: ""}
+  state = { showForm: false, search: '' };
 
-  handleSubmit = (e) => {
-    e.preventDefault()
-  }
+  toggleForm = () => {
+    this.setState((state) => {
+      return { showForm: !state.showForm };
+    });
+  };
+
   handleChange = (e) => {
-    this.setState({search: e.target.value})
-    console.log(e.target.value)
-  }
+    this.setState({ search: e.target.value });
+  };
 
   render() {
+    const { showForm } = this.state;
     const { dishes } = this.props;
     return (
-      <Container>
-        <form onClick={this.handleSubmit}>
-          <input onChange={this.handleChange} />
-        </form>
-        <List>
-          {dishes.map((d) => ( d.dish.includes(this.state.search) ?
-            <List.Item>
-              {d.dish} - {d.price}
-            </List.Item>
-            :
-            null
-          ))}
-        </List>
+      <Container textalign="center">
+        <Button compact onClick={this.toggleForm}>
+          {showForm ? 'Cancel' : 'Add Dish'}
+        </Button>
+        <Divider hidden />
+        {showForm ? (
+          <DishForm
+            {...dishes}
+            closeForm={this.toggleForm}
+          />
+        ) : (
+          <div>
+            <Form>
+              <Form.Input
+                onChange={this.handleChange}
+                placeholder="Search Dishes..."
+              />
+            </Form>
+            <List>
+              {dishes.map(
+                (d) =>
+                  d.dish
+                    .toLowerCase()
+                    .includes(
+                      this.state.search.toLowerCase(),
+                    ) ? (
+                    <List.Item>
+                      {d.dish} - {d.price}
+                    </List.Item>
+                  ) : null,
+              )}
+            </List>
+          </div>
+        )}
       </Container>
     );
   }
