@@ -35,6 +35,7 @@ class Api::DishesController < ApplicationController
       params.require(:dish).permit(
         :dish, :price,
         :category, :description,
+        :incart
       )
     end
 

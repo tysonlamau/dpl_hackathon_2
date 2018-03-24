@@ -6,7 +6,7 @@ import Register from './Register';
 import Flash from './Flash';
 import Home from './Home';
 import About from './About';
-import ProtectedRoute from './ProtectedRoute';
+import Cart from './Cart';
 import AuthRoute from './AuthRoute';
 import FetchUser from './FetchUser';
 import { Switch, Route } from 'react-router-dom';
@@ -27,6 +27,10 @@ class App extends Component {
               exact
               path="/about"
               component={About}
+            />
+            <Route
+              exact path='/cart'
+              component={Cart}
             />
             <Route
               path="/menu"
