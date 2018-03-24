@@ -49,10 +49,17 @@ class App extends Component {
               path="/login"
               component={Login}
             />
+<<<<<<< HEAD
           <AuthRoute
             exact
             path="/register"
             component={Register}
+=======
+            <AuthRoute
+              exact
+              path="/register"
+              component={Register}
+>>>>>>> Accidentally deleted register route
             />
             <Route component={NoMatch} />
           </Switch>
