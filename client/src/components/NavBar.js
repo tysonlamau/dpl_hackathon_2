@@ -3,15 +3,27 @@ import {
   Menu,
   Header,
   Divider,
+
 } from 'semantic-ui-react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { handleLogout } from '../actions/auth';
+import 'semantic-ui-css/semantic.min.css';
+
 //TODO   import {Cart} from 'LINK';
+
+
+const headerText = {
+  fontHeight: '5em',
+  textFamily: "Arial",
+  fontHeight: "500%",
+};
 
 class NavBar extends Component {
   rightNavs = () => {
     const { user, dispatch, history } = this.props;
+
+
 
     if (user.id) {
       return (
@@ -44,7 +56,16 @@ class NavBar extends Component {
     return (
       <div>
         <Divider hidden />
-        <Header as="h1" textAlign="center">
+        <Header
+        class="ui huge header"
+        as="h1"
+        style=
+        {headerText}
+        textFamily="Arial"
+        lineHeight="4em"
+        fontHeight="500%"
+        lineHeight="4em"
+        textAlign="center">
           Mom&#8217;s Kitchen
         </Header>
         <Menu pointing secondary>

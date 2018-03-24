@@ -14,6 +14,10 @@ class Home extends Component {
         <Grid centered>
           <Image
             fluid
+            style={{
+              "height" : "90%",
+              "width" : "90%"
+            }}
             src="https://sifu.unileversolutions.com/image/en-US/recipe-topvisual/2/1260-709/taiwanese-beef-noodle-soup-50294784.jpg"
           />
           <Divider hidden />
