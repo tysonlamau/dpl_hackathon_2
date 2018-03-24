@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 20180324160854) do
   end
 
   create_table "dishes", force: :cascade do |t|
+    t.integer "views"
+    t.integer "purchase"
     t.boolean "incart"
     t.string "dish"
     t.float "price"
