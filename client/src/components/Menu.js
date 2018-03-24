@@ -96,9 +96,11 @@ class Menu extends React.Component {
                               <Divider />
                             </Card.Content>
                           </Card.Content>
-                          <Button color="blue">
-                            View Dish
-                          </Button>
+                          <Link to={`/menu/${d.id}`}>
+                            <Button fluid color="blue">
+                              View Dish
+                            </Button>
+                          </Link>
                           <Button
                             onClick={() =>
                               this.handleClick(d)
