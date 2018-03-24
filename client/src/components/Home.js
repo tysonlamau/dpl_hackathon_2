@@ -42,7 +42,7 @@ class Home extends Component {
               rel='noopener noreferrer'
               color='yelp'
               color = 'red'>
-              <Icon name='yelp'/> yelp
+              <Icon name='yelp'/> Yelp
               </Button>
           </Grid.Row>
           <Divider />
