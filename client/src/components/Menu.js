@@ -25,7 +25,15 @@ class Menu extends React.Component {
 
   handleClick = (d) => {
     const { dispatch } = this.props;
-    let dish = { ...d, incart: !d.incart };
+    console.log(d.views)
+    let dish = { ...d, incart: !d.incart, views: d.views + 1 };
+    dispatch(updateDish(dish));
+  };
+
+  handleViewClick = (d) => {
+    const { dispatch } = this.props;
+    console.log(d.views)
+    let dish = { ...d, views: d.views + 1 };
     dispatch(updateDish(dish));
   };
 
@@ -96,7 +104,7 @@ class Menu extends React.Component {
                             </Card.Content>
                           </Card.Content>
                           <Link to={`/menu/${d.id}`}>
-                            <Button fluid color="blue">
+                            <Button fluid color="blue" onClick={() => this.handleViewClick(d)}>
                               View Dish
                             </Button>
                           </Link>
