@@ -3,7 +3,6 @@ import {
   Menu,
   Header,
   Divider,
-
 } from 'semantic-ui-react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -14,9 +13,8 @@ import 'semantic-ui-css/semantic.min.css';
 
 
 const headerText = {
-  fontHeight: '5em',
+  fontHeight: '10rem !important',
   textFamily: "Arial",
-  fontHeight: "500%",
 };
 
 class NavBar extends Component {
@@ -61,10 +59,6 @@ class NavBar extends Component {
         as="h1"
         style=
         {headerText}
-        textFamily="Arial"
-        lineHeight="4em"
-        fontHeight="500%"
-        lineHeight="4em"
         textAlign="center">
           Mom&#8217;s Kitchen
         </Header>
