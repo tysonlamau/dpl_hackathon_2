@@ -15,19 +15,21 @@ import {
 } from 'semantic-ui-react';
 import axios from 'axios';
 
-class Cart extends React.Component {
-  state = { showComplete: false, found: false }
+class Hist extends React.Component {
+
+  componentDidMount(){
+    this.props.dispatch(getDishes());
+  }
 
   render() {
     const { dishes } = this.props;
-    return (
-      dishes.map((d) => {<div>Dish: {d.dish} - Price: {d.price} - purschases: {d.purchase} - views: {d.views} - revenue: {d.purchase * d.price}</div>})
-    )
+    return ( dishes.map((d) => <div>Dish: {d.dish} - Price: {d.price} - purschases: {d.purchase} - views: {d.views} - revenue: {d.purchase * d.price}</div>))
   }
+
 }
 
 const mapStateToProps = (state) => {
   return { dishes: state.dishes };
 };
 
-export default connect(mapStateToProps)(Cart);
+export default connect(mapStateToProps)(Hist);

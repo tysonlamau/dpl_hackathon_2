@@ -7,6 +7,7 @@ import Flash from './Flash';
 import Home from './Home';
 import About from './About';
 import Cart from './Cart';
+import Hist from './Hist'
 import AuthRoute from './AuthRoute';
 import FetchUser from './FetchUser';
 import { Switch, Route } from 'react-router-dom';
@@ -41,12 +42,17 @@ class App extends Component {
             <Route
               exact
               path="/history"
-              component={History}
+              component={Hist}
             />
             <AuthRoute
               exact
               path="/login"
               component={Login}
+            />
+          <AuthRoute
+            exact
+            path="/register"
+            component={Register}
             />
             <Route component={NoMatch} />
           </Switch>
