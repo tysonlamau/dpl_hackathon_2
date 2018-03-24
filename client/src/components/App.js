@@ -12,6 +12,7 @@ import FetchUser from './FetchUser';
 import { Switch, Route } from 'react-router-dom';
 import { Header } from 'semantic-ui-react';
 import FetchMenu from './FetchMenu';
+// import History from './History';
 
 class App extends Component {
   render() {
@@ -37,15 +38,15 @@ class App extends Component {
               path="/menu"
               component={FetchMenu}
             />
+            <Route
+              exact
+              path="/history"
+              component={History}
+            />
             <AuthRoute
               exact
               path="/login"
               component={Login}
-            />
-            <AuthRoute
-              exact
-              path="/register"
-              component={Register}
             />
             <Route component={NoMatch} />
           </Switch>

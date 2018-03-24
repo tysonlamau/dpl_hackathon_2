@@ -3,7 +3,6 @@ import {
   Menu,
   Header,
   Divider,
-
 } from 'semantic-ui-react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -12,22 +11,25 @@ import 'semantic-ui-css/semantic.min.css';
 
 //TODO   import {Cart} from 'LINK';
 
-
 const headerText = {
   fontHeight: '5em',
-  textFamily: "Arial",
-  fontHeight: "500%",
+  textFamily: 'Arial',
+  fontHeight: '500%',
 };
 
 class NavBar extends Component {
   rightNavs = () => {
     const { user, dispatch, history } = this.props;
 
-
-
     if (user.id) {
       return (
         <Menu.Menu position="right">
+          <Link to="/cart">
+            <Menu.Item name="Cart" />
+          </Link>
+          <Link to="/history">
+            <Menu.Item name="History" />
+          </Link>
           <Menu.Item
             name="Logout"
             onClick={() =>
@@ -39,12 +41,6 @@ class NavBar extends Component {
     }
     return (
       <Menu.Menu position="right">
-        <Link to="/register">
-          <Menu.Item name="Register" />
-        </Link>
-        <Link to="/login">
-          <Menu.Item name="Login" />
-        </Link>
         <Link to="/cart">
           <Menu.Item name="Cart" />
         </Link>
@@ -57,15 +53,14 @@ class NavBar extends Component {
       <div>
         <Divider hidden />
         <Header
-        class="ui huge header"
-        as="h1"
-        style=
-        {headerText}
-        textFamily="Arial"
-        lineHeight="4em"
-        fontHeight="500%"
-        lineHeight="4em"
-        textAlign="center">
+          class="ui huge header"
+          as="h1"
+          style={headerText}
+          textFamily="Arial"
+          lineHeight="4em"
+          fontHeight="500%"
+          lineHeight="4em"
+          textAlign="center">
           Mom&#8217;s Kitchen
         </Header>
         <Menu pointing secondary>
