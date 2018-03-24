@@ -40,7 +40,10 @@ class NavBar extends Component {
         <Header as='h1' textAlign='center'>Mom&#8217;s Kitchen</Header>
         <Menu pointing secondary>
           <Link to='/'>
-            <Menu.Item name='home' />
+            <Menu.Item name='Home' />
+          </Link>
+          <Link to='/about'>
+            <Menu.Item name='About' />
           </Link>
           { this.rightNavs() }
         </Menu>
