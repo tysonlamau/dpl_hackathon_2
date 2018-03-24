@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import {
   Container,
+  Segment,
   Header,
   Grid,
   Card,
@@ -12,6 +13,7 @@ import {
   Form,
 } from 'semantic-ui-react';
 import DishForm from './DishForm';
+import { updateDish } from '../actions/dishes';
 
 class Menu extends React.Component {
   state = { showForm: false, search: '' };
@@ -20,6 +22,12 @@ class Menu extends React.Component {
     this.setState((state) => {
       return { showForm: !state.showForm };
     });
+  };
+
+  handleClick = (d) => {
+    const { dispatch } = this.props;
+    let dish = { ...d, incart: !d.incart };
+    dispatch(updateDish(dish));
   };
 
   handleChange = (e) => {
@@ -31,6 +39,17 @@ class Menu extends React.Component {
     const { dishes } = this.props;
     return (
       <Container textalign="center">
+        <Segment inverted>
+          <Header
+            as="h3"
+            size="huge"
+            textAlign="center"
+            inverted
+            color="purple">
+            Menu
+          </Header>
+        </Segment>
+        <Divider hidden />
         <Button compact onClick={this.toggleForm}>
           {showForm ? 'Cancel' : 'Add Dish'}
         </Button>
@@ -48,6 +67,7 @@ class Menu extends React.Component {
                 placeholder="Search Dishes..."
               />
             </Form>
+            <Divider hidden />
             <List>
               {dishes.map(
                 (d) =>
@@ -56,9 +76,41 @@ class Menu extends React.Component {
                     .includes(
                       this.state.search.toLowerCase(),
                     ) ? (
-                    <List.Item>
-                      {d.dish} - {d.price}
-                    </List.Item>
+                    <Card.Group itemsPerRow={4}>
+                      <Card key={d.id}>
+                        <Card.Content>
+                          <Card.Header>
+                            {d.dish}
+                          </Card.Header>
+                          <Card.Meta>
+                            ${parseFloat(
+                              Math.round(
+                                d.price * 100,
+                              ) / 100,
+                            ).toFixed(2)}
+                          </Card.Meta>
+                          <Divider />
+                          <Card.Content>
+                            {/*<Image src = {d.image}/>*/}
+                            --insert image here--
+                            <Divider />
+                          </Card.Content>
+                        </Card.Content>
+                        <Button color="purple">
+                          View Dish
+                        </Button>
+                        <Button
+                          onClick={() =>
+                            this.handleClick(d)
+                          }>
+                          {d.incart ? (
+                            <p>Remove From Cart</p>
+                          ) : (
+                            <p>Add to Cart</p>
+                          )}
+                        </Button>
+                      </Card>
+                    </Card.Group>
                   ) : null,
               )}
             </List>
