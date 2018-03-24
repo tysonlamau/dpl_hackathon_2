@@ -11,6 +11,7 @@ import {
   Grid,
 } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+import { deleteDish } from '../actions/dishes';
 import DishForm from './DishForm';
 
 class MenuView extends React.Component {
@@ -43,6 +44,17 @@ class MenuView extends React.Component {
             <Button onClick={this.toggleForm}>
               {showForm ? 'Cancel' : 'Edit'}
             </Button>
+            <Link to="/menu">
+              <Button
+                color="red"
+                onClick={() =>
+                  this.props.dispatch(
+                    deleteDish(dish.id),
+                  )
+                }>
+                Delete
+              </Button>
+            </Link>
             <Grid.Row>
               <Grid.Column width={16}>
                 <Card fluid>

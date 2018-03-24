@@ -92,8 +92,7 @@ class Menu extends React.Component {
                             <Divider />
                             <Card.Content>
                               {/*<Image src = {d.image}/>*/}
-                              --insert image here--
-                              <Divider />
+                              --IMAGE NOT FOUND--
                             </Card.Content>
                           </Card.Content>
                           <Link to={`/menu/${d.id}`}>
