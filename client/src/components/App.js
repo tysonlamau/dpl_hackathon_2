@@ -13,7 +13,7 @@ import FetchUser from './FetchUser';
 import { Switch, Route } from 'react-router-dom';
 import { Header } from 'semantic-ui-react';
 import FetchMenu from './FetchMenu';
-// import History from './History';
+import Hist from './Hist';
 
 class App extends Component {
   render() {

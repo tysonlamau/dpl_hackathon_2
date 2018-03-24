@@ -25,7 +25,7 @@ class MenuView extends React.Component {
 
   render() {
     const { showForm } = this.state;
-    const { dish = {}, user } = this.props;
+    const { dish = {}, isAuthenticated } = this.props;
 
     return (
       <Container textalign="center">
@@ -39,20 +39,6 @@ class MenuView extends React.Component {
             <Link to="/menu">
               <Button fluid color="blue">
                 Back To Menu
-              </Button>
-            </Link>
-            <Button onClick={this.toggleForm}>
-              {showForm ? 'Cancel' : 'Edit'}
-            </Button>
-            <Link to="/menu">
-              <Button
-                color="red"
-                onClick={() =>
-                  this.props.dispatch(
-                    deleteDish(dish.id),
-                  )
-                }>
-                Delete
               </Button>
             </Link>
             <Grid.Row>
@@ -83,6 +69,24 @@ class MenuView extends React.Component {
             </Grid.Row>
           </Grid>
         )}
+        {isAuthenticated ? (
+          <div>
+            <Button onClick={this.toggleForm}>
+              {showForm ? 'Cancel' : 'Edit'}
+            </Button>
+            <Link to="/menu">
+              <Button
+                color="red"
+                onClick={() =>
+                  this.props.dispatch(
+                    deleteDish(dish.id),
+                  )
+                }>
+                Delete
+              </Button>
+            </Link>
+          </div>
+        ) : null}
       </Container>
     );
   }
@@ -93,6 +97,7 @@ const mapStateToProps = (state, props) => {
     dish: state.dishes.find(
       (d) => d.id === parseInt(props.match.params.id),
     ),
+    isAuthenticated: state.user.id,
   };
 };
 
