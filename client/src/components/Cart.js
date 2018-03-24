@@ -16,15 +16,53 @@ import {
 import axios from 'axios';
 
 class Cart extends React.Component {
+  state = { showComplete: false, found: false }
+
   componentDidMount() {
+    const { dishes } = this.props;
+    var found = false;
+    for(var i = 0; i < dishes.length; i++) {
+      if (dishes[i].incart) {
+        this.setState({found: true})
+        break;
+      }
+    }
     this.props.dispatch(getDishes());
+  }
+  componentWillReceiveProps(){
+    const { dishes } = this.props;
+    console.log(dishes)
+    for(var i = 0; i < dishes.length; i++) {
+      if (dishes[i].incart) {
+        this.setState({found: true})
+        break;
+      }
+    }
   }
 
   handleClick = (d) => {
     const { dispatch } = this.props;
     let dish = { ...d, incart: !d.incart };
     dispatch(updateDish(dish));
+    this.checkCart();
   };
+
+  handlePurchaseClick = (d) => {
+    const { dispatch } = this.props;
+    const { dishes } = this.props
+    dishes.map((d) => d.incart ? dispatch(updateDish({...d, purchase: d.purchase + 1, incart: !d.incart})) : dispatch(updateDish(d)))
+    this.setState({ showComplete: !this.state.showComplete, found: false })
+  };
+
+  checkCart = () => {
+    const { dishes } = this.props
+    for(var i = 0; i < dishes.length; i++) {
+      if (dishes[i].incart) {
+        this.setState({found: true})
+        break;
+      }
+    }
+  }
 
   render() {
     const { dishes } = this.props;
@@ -40,6 +78,10 @@ class Cart extends React.Component {
             Your Cart
           </Header>
         </Segment>
+        <Divider hidden />
+        { this.state.found ?
+         (this.state.showComplete ? <p>Your Order Was Procesed</p> : <Button onClick={this.handlePurchaseClick}>Purchase</Button>)  :
+        "Cart Empty" }
         <Divider hidden />
         <Grid>
           <Grid.Row>
