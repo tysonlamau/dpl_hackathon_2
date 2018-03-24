@@ -11,7 +11,7 @@ import AuthRoute from './AuthRoute';
 import FetchUser from './FetchUser';
 import { Switch, Route } from 'react-router-dom';
 import { Header } from 'semantic-ui-react';
-
+import FetchMenu from './FetchMenu';
 
 class App extends Component {
   render() {
@@ -22,10 +22,26 @@ class App extends Component {
         <Flash />
         <FetchUser>
           <Switch>
-            <Route exact path='/' component={Home} />
-            <AuthRoute exact path='/login' component={Login} />
-            <AuthRoute exact path='/register' component={Register} />
-            <AuthRoute exact path='/about' component={About} />
+            <Route exact path="/" component={Home} />
+            <Route
+              exact
+              path="/about"
+              component={About}
+            />
+            <Route
+              path="/menu"
+              component={FetchMenu}
+            />
+            <AuthRoute
+              exact
+              path="/login"
+              component={Login}
+            />
+            <AuthRoute
+              exact
+              path="/register"
+              component={Register}
+            />
             <Route component={NoMatch} />
           </Switch>
         </FetchUser>

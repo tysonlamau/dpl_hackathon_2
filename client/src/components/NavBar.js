@@ -11,49 +11,58 @@ class NavBar extends Component {
 
     if (user.id) {
       return (
-        <Menu.Menu position='right'>
+        <Menu.Menu position="right">
           <Menu.Item
-            name='Logout'
-            onClick={() => dispatch(handleLogout(history))}
+            name="Logout"
+            onClick={() =>
+              dispatch(handleLogout(history))
+            }
           />
         </Menu.Menu>
       );
     }
     return (
-      <Menu.Menu position='right'>
-        <Link to='/register'>
-          <Menu.Item name='Register' />
+      <Menu.Menu position="right">
+        <Link to="/register">
+          <Menu.Item name="Register" />
         </Link>
-        <Link to='/login'>
-          <Menu.Item name='Login' />
+        <Link to="/login">
+          <Menu.Item name="Login" />
         </Link>
-        <Link to='/cart'>
-          <Menu.Item name='Cart' />
+        <Link to="/cart">
+          <Menu.Item name="Cart" />
         </Link>
       </Menu.Menu>
     );
-  }
+  };
 
   render() {
     return (
       <div>
-        <Header as='h1' textAlign='center'>Mom&#8217;s Kitchen</Header>
+        <Header as="h1" textAlign="center">
+          Mom&#8217;s Kitchen
+        </Header>
         <Menu pointing secondary>
-          <Link to='/'>
-            <Menu.Item name='Home' />
+          <Link to="/">
+            <Menu.Item name="Home" />
           </Link>
-          <Link to='/about'>
-            <Menu.Item name='About' />
+          <Link to="/about">
+            <Menu.Item name="About" />
           </Link>
-          { this.rightNavs() }
+          <Link to="/menu">
+            <Menu.Item name="Menu" />
+          </Link>
+          {this.rightNavs()}
         </Menu>
       </div>
     );
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return { user: state.user };
 };
 
-export default withRouter(connect(mapStateToProps)(NavBar));
+export default withRouter(
+  connect(mapStateToProps)(NavBar),
+);
