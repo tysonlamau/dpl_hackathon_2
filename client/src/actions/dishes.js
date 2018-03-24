@@ -13,6 +13,7 @@ export const getDishes = (callback) => {
         dispatch({
           type: DISHES,
           dishes: res.data,
+          headers: res.headers,
         }),
       )
       .then(callback);
@@ -25,6 +26,7 @@ export const addDish = (dish) => {
       dispatch({
         type: ADD_DISH,
         dish: res.data,
+        headers: res.headers,
       }),
     );
   };
@@ -38,6 +40,7 @@ export const updateDish = (dish) => {
         dispatch({
           type: UPDATE_DISH,
           dish: res.data,
+          headers: res.headers,
         }),
       );
   };
@@ -51,6 +54,7 @@ export const deleteDish = (dish_id) => {
         dispatch({
           type: DELETE_DISH,
           dish_id,
+          headers: res.headers,
         }),
       );
   };

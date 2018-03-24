@@ -9,6 +9,7 @@ export const getCart = () => {
       dispatch({
         type: CART,
         cart: res.data,
+        headers: res.headers,
       });
     });
   };
@@ -20,6 +21,7 @@ export const addToCart = (dish) => {
       dispatch({
         type: ADD_TO_CART,
         dish: res.data,
+        headers: res.headers,
       }),
     );
   };

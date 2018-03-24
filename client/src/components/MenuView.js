@@ -25,7 +25,7 @@ class MenuView extends React.Component {
 
   render() {
     const { showForm } = this.state;
-    const { dish = {} } = this.props;
+    const { dish = {}, user } = this.props;
 
     return (
       <Container textalign="center">
