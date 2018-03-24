@@ -9,7 +9,6 @@ import {
   Card,
   Divider,
   Button,
-  List,
   Form,
 } from 'semantic-ui-react';
 import DishForm from './DishForm';
@@ -45,7 +44,7 @@ class Menu extends React.Component {
             size="huge"
             textAlign="center"
             inverted
-            color="purple">
+            color="blue">
             Menu
           </Header>
         </Segment>
@@ -68,52 +67,54 @@ class Menu extends React.Component {
               />
             </Form>
             <Divider hidden />
-            <List>
-              {dishes.map(
-                (d) =>
-                  d.dish
-                    .toLowerCase()
-                    .includes(
-                      this.state.search.toLowerCase(),
-                    ) ? (
-                    <Card.Group itemsPerRow={4}>
-                      <Card key={d.id}>
-                        <Card.Content>
-                          <Card.Header>
-                            {d.dish}
-                          </Card.Header>
-                          <Card.Meta>
-                            ${parseFloat(
-                              Math.round(
-                                d.price * 100,
-                              ) / 100,
-                            ).toFixed(2)}
-                          </Card.Meta>
-                          <Divider />
+            <Grid>
+              <Grid.Row>
+                {dishes.map(
+                  (d) =>
+                    d.dish
+                      .toLowerCase()
+                      .includes(
+                        this.state.search.toLowerCase(),
+                      ) ? (
+                      <Grid.Column width={4}>
+                        <Card key={d.id}>
                           <Card.Content>
-                            {/*<Image src = {d.image}/>*/}
-                            --insert image here--
+                            <Card.Header>
+                              {d.dish}
+                            </Card.Header>
+                            <Card.Meta>
+                              ${parseFloat(
+                                Math.round(
+                                  d.price * 100,
+                                ) / 100,
+                              ).toFixed(2)}
+                            </Card.Meta>
                             <Divider />
+                            <Card.Content>
+                              {/*<Image src = {d.image}/>*/}
+                              --insert image here--
+                              <Divider />
+                            </Card.Content>
                           </Card.Content>
-                        </Card.Content>
-                        <Button color="purple">
-                          View Dish
-                        </Button>
-                        <Button
-                          onClick={() =>
-                            this.handleClick(d)
-                          }>
-                          {d.incart ? (
-                            <p>Remove From Cart</p>
-                          ) : (
-                            <p>Add to Cart</p>
-                          )}
-                        </Button>
-                      </Card>
-                    </Card.Group>
-                  ) : null,
-              )}
-            </List>
+                          <Button color="blue">
+                            View Dish
+                          </Button>
+                          <Button
+                            onClick={() =>
+                              this.handleClick(d)
+                            }>
+                            {d.incart ? (
+                              <p>Remove From Cart</p>
+                            ) : (
+                              <p>Add to Cart</p>
+                            )}
+                          </Button>
+                        </Card>
+                      </Grid.Column>
+                    ) : null,
+                )}
+              </Grid.Row>
+            </Grid>
           </div>
         )}
       </Container>
