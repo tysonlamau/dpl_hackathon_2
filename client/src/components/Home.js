@@ -31,11 +31,15 @@ class Home extends Component {
             <Grid.Row>
             <Button 
                href='https://www.facebook.com/YummyTaiwaneseFood/'
-              color='facebook'>
+               target='_blank'
+               rel='noopener noreferrer'
+                color='facebook'>
               <Icon name='facebook' /> Facebook
              </Button> 
              <Button 
               href='https://www.yelp.com/biz/moms-kitchen-salt-lake-city'
+              target='_blank'
+              rel='noopener noreferrer'
               color='yelp'
               color = 'red'>
               <Icon name='yelp'/> yelp
