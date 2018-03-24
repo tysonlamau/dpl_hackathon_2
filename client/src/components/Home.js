@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 import {
   Container,
   Grid,
   Image,
   Header,
   Divider,
+  Icon,
+  Button,
 } from 'semantic-ui-react';
+
 
 class Home extends Component {
   render() {
@@ -23,6 +27,19 @@ class Home extends Component {
           <Divider hidden />
           <Grid.Row>
             <Header as="h3">Contact Us</Header>
+            </Grid.Row>
+            <Grid.Row>
+            <Button 
+               href='https://www.facebook.com/YummyTaiwaneseFood/'
+              color='facebook'>
+              <Icon name='facebook' /> Facebook
+             </Button> 
+             <Button 
+              href='https://www.yelp.com/biz/moms-kitchen-salt-lake-city'
+              color='yelp'
+              color = 'red'>
+              <Icon name='yelp'/> yelp
+              </Button>
           </Grid.Row>
           <Divider />
           <Grid.Row>
