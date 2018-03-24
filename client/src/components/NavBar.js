@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
-import { Menu, Header } from 'semantic-ui-react';
+import {
+  Menu,
+  Header,
+  Divider,
+} from 'semantic-ui-react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { handleLogout } from '../actions/auth';
@@ -39,6 +43,7 @@ class NavBar extends Component {
   render() {
     return (
       <div>
+        <Divider hidden />
         <Header as="h1" textAlign="center">
           Mom&#8217;s Kitchen
         </Header>

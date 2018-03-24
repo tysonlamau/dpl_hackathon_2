@@ -1,36 +1,34 @@
 import React, { Component } from 'react';
-import { Divider } from 'semantic-ui-react';
-
+import {
+  Container,
+  Grid,
+  Image,
+  Header,
+  Divider,
+} from 'semantic-ui-react';
 
 class Home extends Component {
   render() {
     return (
-      <div>
-        <h1>Menu</h1>
-        <p>TODO:  ADD menu items from db</p>
-        <div>
-          <h1>Category</h1>
-          <ul>
-            <li>first</li>
-            <li>second</li>
-            <li>third</li>
-          </ul>
-          <h1>Second Category</h1>
-          <ul>
-            <li>first</li>
-            <li>second</li>
-            <li>third</li>
-          </ul>
-        </div>
-
-        <h1>About</h1>
-        <p>information</p>
-        <div>
-          <h1>Location</h1>
-          <p>Location and contact info</p>
-        </div>
-
-      </div>
+      <Container>
+        <Grid centered>
+          <Image
+            fluid
+            src="https://sifu.unileversolutions.com/image/en-US/recipe-topvisual/2/1260-709/taiwanese-beef-noodle-soup-50294784.jpg"
+          />
+          <Divider hidden />
+          <Grid.Row>
+            <Header as="h3">Contact Us</Header>
+          </Grid.Row>
+          <Divider />
+          <Grid.Row>
+            <Header as="h5">
+              Mom’s Kitchen | (801)486-0092 | 2233 S
+              State St, Salt Lake City, UT 84115
+            </Header>
+          </Grid.Row>
+        </Grid>
+      </Container>
     );
   }
 }
