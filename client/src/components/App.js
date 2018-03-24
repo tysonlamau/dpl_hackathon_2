@@ -12,7 +12,6 @@ import FetchUser from './FetchUser';
 import { Switch, Route } from 'react-router-dom';
 import { Header } from 'semantic-ui-react';
 import FetchMenu from './FetchMenu';
-import menuItems from './menuItems';
 
 class App extends Component {
   render() {
@@ -30,16 +29,13 @@ class App extends Component {
               component={About}
             />
             <Route
-              exact path='/cart'
+              exact
+              path="/cart"
               component={Cart}
             />
             <Route
               path="/menu"
               component={FetchMenu}
-            />
-            <Route
-              path="/testmenu"
-              component={menuItems}
             />
             <AuthRoute
               exact
