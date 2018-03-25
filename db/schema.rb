@@ -16,11 +16,14 @@ ActiveRecord::Schema.define(version: 20180324160854) do
   enable_extension "plpgsql"
 
   create_table "carts", force: :cascade do |t|
+    t.string "order"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "dishes", force: :cascade do |t|
+    t.integer "views"
+    t.integer "purchase"
     t.boolean "incart"
     t.string "dish"
     t.float "price"

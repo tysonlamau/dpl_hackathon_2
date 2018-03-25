@@ -7,13 +7,12 @@ import Flash from './Flash';
 import Home from './Home';
 import About from './About';
 import Cart from './Cart';
-import Hist from './Hist'
+import Hist from './Hist';
 import AuthRoute from './AuthRoute';
 import FetchUser from './FetchUser';
 import { Switch, Route } from 'react-router-dom';
 import { Header } from 'semantic-ui-react';
 import FetchMenu from './FetchMenu';
-import Hist from './Hist';
 
 class App extends Component {
   render() {
@@ -49,17 +48,10 @@ class App extends Component {
               path="/login"
               component={Login}
             />
-<<<<<<< HEAD
-          <AuthRoute
-            exact
-            path="/register"
-            component={Register}
-=======
             <AuthRoute
               exact
               path="/register"
               component={Register}
->>>>>>> Accidentally deleted register route
             />
             <Route component={NoMatch} />
           </Switch>
